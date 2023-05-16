@@ -1,5 +1,6 @@
 package com.cydeo.g20.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import java.util.List;
@@ -11,7 +12,7 @@ public class Track {
     private int disc_number;
     private int duration_ms;
     private Boolean explicit;
-    private External_id_isrc external_ids;
+    private External_id external_ids;
     private ExternalUrls external_urls;
     private String href;
     private String id;
