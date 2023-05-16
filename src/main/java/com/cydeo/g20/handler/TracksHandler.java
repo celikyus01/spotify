@@ -1,30 +1,30 @@
 package com.cydeo.g20.handler;
 
-import com.cydeo.g20.models.Album;
+import com.cydeo.g20.models.Track;
 import com.cydeo.g20.utilities.Mapper;
 import com.cydeo.g20.utilities.RequestSpecs;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import io.restassured.response.Response;
 
-public class AlbumsHandler extends RequestSpecs {
+public class TracksHandler extends RequestSpecs {
 
-    public static void getAlbum() throws JsonProcessingException {
+    public static void getTrack() throws JsonProcessingException {
 
-        // Album identifier for test - '4aawyAB9vmqN3uQ7FjRGTy'
+        // Track identifier for test - '11dFghVXANMlKmJXsNCbNl'
         // where query key 'market' is set to 'US'
 
         Response response = getHttpReqSpecs()
                 .queryParams("market","US")
-                .get(ALBUMS + "4aawyAB9vmqN3uQ7FjRGTy");
+                .get(TRACKS + "11dFghVXANMlKmJXsNCbNl");
 
-        Album album = Mapper.mapAlbum(response);
+        Track track = Mapper.mapTrack(response);
 
-        System.out.println("artist.getId() = " + album.toString());
+        System.out.println("artist.getId() = " + track.toString());
 
     }
 
     public static void main(String[] args) throws JsonProcessingException {
-        getAlbum();
+        getTrack();
     }
 
 }

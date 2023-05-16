@@ -9,7 +9,7 @@ public class Album {
     private String album_type;
     private List<Artist> artists;
     private List<Copyright> copyrights;
-    private External_id external_ids;
+    private External_id_upc external_ids;
     private ExternalUrls external_urls;
     private List<String> genres;
     private String href;
@@ -22,7 +22,7 @@ public class Album {
     private String release_date;
     private String release_date_precision;
     private int total_tracks;
-    private Track tracks;
+    private Tracks tracks;
     private String type;
     private String uri;
 }
