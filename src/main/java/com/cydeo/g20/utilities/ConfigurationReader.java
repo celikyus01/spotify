@@ -25,40 +25,58 @@ public class ConfigurationReader {
         }
     }
 
-    private static String get(String keyName) {
+    public static String getProperty(String keyName) {
         return properties.getProperty(keyName);
     }
 
-    public static String getTokenUrl(){
-        String url = get("tokenUrl");
-        if(url==null)
+    public static String getTokenUrl() {
+        String url = getProperty("tokenUrl");
+        if (url == null)
             throw new NullPointerException("The token url could not be found");
         return url;
     }
 
-    public static String getBaseUrl(){
-        String url = get("baseUrl");
-        if(url==null)
-            throw new NullPointerException("The base url could not be found");
-        return url;
-    }
-
-    public static String getClientid(){
-        String clientId = get("clientId");
-        if(clientId==null)
+    public static String getClientid() {
+        String clientId = getProperty("clientId");
+        if (clientId == null)
             throw new NullPointerException("The cleint id could not be found");
         return clientId;
     }
 
-    public static String getClientSecret(){
-        String clientSecret = get("clientSecret");
-        if(clientSecret==null)
+    public static String getClientSecret() {
+        String clientSecret = getProperty("clientSecret");
+        if (clientSecret == null)
             throw new NullPointerException("The cleint secret could not be found");
         return clientSecret;
     }
 
-    public static String getRequestUrl(String endpoint, String id){
-        return getBaseUrl()+endpoint+id;
+    public static String getRequestUrl(String endpoint, String id) {
+        return getBaseUrl() + endpoint + id;
+    }
+
+    public static String getUsernameByUserId(String userId) {
+        return String.format(getProperty("formatTest"), userId);
+
+    }
+
+    public static String getBaseUrl() {
+        String env = null;
+        if (getEnv().equals("test"))
+            env = "";
+        else env = getEnv();
+
+        return String.format(getProperty("baseUrl"), env);
+    }
+
+    public static String getEnv() {
+        return getProperty("env");
+    }
+
+
+    public static void main(String[] args) {
+        String usernameByUserId = getUsernameByUserId("123");
+        System.out.println("usernameByUserId = " + usernameByUserId);
+
     }
 
 

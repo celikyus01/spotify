@@ -8,14 +8,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.response.Response;
 
 public class Mapper {
-    public static Artist mapArtist(Response response) throws JsonProcessingException {
+    public static Artist mapArtist(Response response) {
 //        return new ObjectMapper().readValue(response.getBody().toString(),Artist.class);
         return response.body().as(Artist.class);
     }
-    public static Album mapAlbum(Response response) throws JsonProcessingException {
+
+    public static Album mapAlbum(Response response) {
         return response.body().as(Album.class);
     }
-    public static Track mapTrack(Response response) throws JsonProcessingException {
+
+    public static Track mapTrack(Response response) {
         return response.body().as(Track.class);
     }
 
